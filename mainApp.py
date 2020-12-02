@@ -4,7 +4,6 @@ import os
 import time
 import requests
 import schedule
-from pynput.keyboard import Controller, Key
 import config
 
 if not os.path.exists("tt.py"):
@@ -18,7 +17,7 @@ def convert24Hours(number, x):
 
 def getTimeTable():
     fortt = """
-import subprocess\nimport time\nimport pyautogui\nimport schedule\n
+import subprocess\nimport time\nimport pyautogui\nimport schedule\nfrom pynput.keyboard import Controller, Key\n
 def SignIn(meetID, meetPassword):
     subprocess.call(["C:/Users/prakh/AppData/Roaming/Zoom/bin/Zoom.exe"])
     time.sleep(10)
@@ -48,13 +47,15 @@ def SignIn(meetID, meetPassword):
     data = {"text": date}
     url = "https://glauniversity.in:8085/MyAccount/DutyDetails"
     r = requests.post(url, data=data, cookies=GYOC)
-    y = json.loads(r.text)
-    x = []
+    try:
+        y = json.loads(r.text)
+    except json.decoder.JSONDecodeError as e:
+        print("SessionID has expired, will need a new one in order to continue")
+        exit()
     schList = []
     meetingID, password, time_ = "", "", ""
     for i in y:
-        a, b = i['TimeFrom'].split(
-            "-")[0].strip(" ").split(" ")  # 10:00 AM - 11:00 AM
+        a, b = i['TimeFrom'].split("-")[0].strip(" ").split(" ")
         time_ = convert24Hours(a[0:a.index(":")], b)
         meetingID, password = i["JoinUrl"][18::].split("?pwd=")
         message = f'schedule.every().day.at("{time_}").do(SignIn,"{meetingID}","{password}")'

@@ -3,6 +3,7 @@ import subprocess
 import time
 import pyautogui
 import schedule
+from pynput.keyboard import Controller, Key
 
 def SignIn(meetID, meetPassword):
     subprocess.call(["C:/Users/prakh/AppData/Roaming/Zoom/bin/Zoom.exe"])

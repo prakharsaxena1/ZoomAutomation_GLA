@@ -1,0 +1,6 @@
+subprocess
+pprint
+requests
+schedule
+pyautogui
+pynput

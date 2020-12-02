@@ -1,0 +1,5 @@
+Login to gla portal in chrome(not in incognito mode)
+open this url chrome://settings/cookies/detail?site=glauniversity.in&search=cookie
+copy the content of "Content" field and paste in config file in place of "SessionID"
+that's it then just run the "mainApp.py" once.
+DO NOT CLOSE THE BROWSER OR LOG OUT FROM THE PORTAL OTHERWIZE IT WILL NOT WORK
