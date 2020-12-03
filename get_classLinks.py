@@ -10,7 +10,7 @@ def convert24Hours(number, x):
 
 
 sessionID = config.sessionID
-date = "2020-12-2"
+date = "2020-12-3"
 GYOC = {"ASP.NET_SessionId": sessionID}
 data = {"text": date}
 url = "https://glauniversity.in:8085/MyAccount/DutyDetails"

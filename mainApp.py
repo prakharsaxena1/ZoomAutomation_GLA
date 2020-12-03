@@ -1,16 +1,12 @@
+import datetime
 import pprint
 import json
-import os
 import time
 import requests
 import schedule
 import config
 import pyautogui
 import subprocess
-
-if not os.path.exists("tt.py"):
-    f = open("tt.py",'w')
-    f.close()
 
 def convert24Hours(number, x):
     if x == "AM":
@@ -39,7 +35,7 @@ def SignIn(meetID, meetPassword):
     
 def getTimeTable():
     sessionID = config.sessionID
-    date = "2020-12-2"
+    date = datetime.date.today()
     GYOC = {"ASP.NET_SessionId": sessionID}
     data = {"text": date}
     url = "https://glauniversity.in:8085/MyAccount/DutyDetails"
