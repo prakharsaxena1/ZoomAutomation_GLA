@@ -9,11 +9,10 @@ import pyautogui
 import subprocess
 import os
 
-Previous_Date = datetime.datetime.today() - datetime.timedelta(days=1)
+Previous_Date = (datetime.datetime.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
 date = datetime.date.today()
 if os.path.exists(f"datadump{Previous_Date}.json"):
     os.remove(f"datadump{Previous_Date}.json")
-
 
 def convert24Hours(number, x):
     if x == "AM":
