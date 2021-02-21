@@ -40,7 +40,7 @@ def get_data():
                         f"{i['SubName']}*{i['ScheduleDate']}*{i['Recording']}\n")
     print("done")
 
-# get_data()
+get_data()
 
 
 subMap = {
