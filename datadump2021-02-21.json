@@ -1,0 +1,26 @@
+[
+  {
+    "Email": "Sorry! No Time Table Found To Attend Online Classes.",
+    "Course": null,
+    "Branch": "Blocked",
+    "Semester": null,
+    "Section": null,
+    "MeetingRoom": null,
+    "MeetingId": null,
+    "MeetingTitle": null,
+    "TotalBatches": null,
+    "ScheduleDate": null,
+    "TimeFrom": null,
+    "EmployeeId": null,
+    "Employee": null,
+    "Attendance": null,
+    "Recording": null,
+    "StartUrl": null,
+    "JoinUrl": null,
+    "Status": null,
+    "SubCode": null,
+    "SubName": null,
+    "IsOwner": 0,
+    "Error": "Enter In Reg.Rows.Count \u003e 0 \u0026\u0026 Reg.Rows[0][0].ToString().ToUpper() == \u0027YES\u0027##"
+  }
+]

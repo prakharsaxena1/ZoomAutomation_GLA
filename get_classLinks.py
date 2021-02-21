@@ -1,6 +1,5 @@
 import json
 import requests
-import config
 import datetime
 import os
 
@@ -16,7 +15,7 @@ if os.path.exists(f"datadump{Previous_Date}.json"):
     os.remove(f"datadump{Previous_Date}.json")
 
 if not os.path.exists(f"datadump{date}.json"):
-    sessionID = config.sessionID
+    sessionID = "" # Your session ID here
     GYOC = {"ASP.NET_SessionId": sessionID}
     data = {"text": date}
     url = "https://glauniversity.in:8085/MyAccount/DutyDetails"
@@ -32,3 +31,5 @@ with open(f"datadump{date}.json") as f:
 # For distribution
 for i in y:
     print(i['TimeFrom']+"   "+i['SubName']+"   "+i['JoinUrl'] + "\n")
+
+input("Press enter to exit")

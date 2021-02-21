@@ -1,5 +1,2 @@
-
 config.py
 test.py
-*.json
-!spec/*.json
