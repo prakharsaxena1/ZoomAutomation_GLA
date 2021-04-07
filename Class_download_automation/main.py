@@ -9,11 +9,11 @@ import pyautogui
 
 
 def get_data():
-    sessionID = "sdwq31hgud2xm0x44l15101n"
+    sessionID = "wcmqrkcvvns3vmyloxo11rrl"
     url = "https://glauniversity.in:8085/MyAccount/DutyDetails"
     GYOC = {"ASP.NET_SessionId": sessionID}
     datafile = open("datafile.txt", "w")
-    datafile.close
+    datafile.close()
     fromDate = int(input("How many days ago from today: "))
     todayDate = datetime.date.today()
     if not os.path.exists("data-dump"):
@@ -80,17 +80,21 @@ driver = webdriver.Chrome(chrome_options=chrome_options, executable_path="chrome
 with open("datafile.txt", 'r') as f:
     for i in f.readlines():
         allList.append(i.split("*"))
-# print(allList)
 
 for i in allList:
     subName = i[0]
     date = i[1].split(".")[0]
     month = monthMap[i[1].split(".")[1]]
     link = i[2].strip("\n")
-    driver.get(link)
-    time.sleep(5)
-    a = driver.find_element_by_class_name("download-btn")
-    a.click()
-    time.sleep(8)
-    pyautogui.write(subMap[subName]+" "+date+" "+month)
-    pyautogui.press('enter')
+    if len(link)<2:
+        continue
+    else:
+        driver.get(link)
+        time.sleep(5)
+        a = driver.find_element_by_class_name("download-btn")
+        a.click()
+        time.sleep(8)
+        writeThis = subMap[subName].upper() + " " + date +" " + month.upper()
+        print("Downloading:",writeThis)
+        pyautogui.write(writeThis)
+        pyautogui.press('enter')
