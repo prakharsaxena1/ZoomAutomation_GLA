@@ -3,15 +3,18 @@ import requests
 import datetime
 import os
 
-def convert24Hours(number, x):
-    if x == "AM":
-        return number+":00"
-    return str(int(number) + 12)+":00"
-
 date = datetime.date.today()
+dumpRemoveList = [i for i in os.listdir(os.getcwd()) if ".json" in i]
+dumpRemoveList.remove("config.json")
+if len(dumpRemoveList) > 0:
+    if f"datadump{date}.json" in dumpRemoveList:
+        dumpRemoveList.remove(f"datadump{date}.json")
+    for i in dumpRemoveList:
+        os.remove(i)
 
 if not os.path.exists(f"datadump{date}.json"):
-    sessionID = "qrfrmb2vb1yarpyfh032aoxj" # Your session ID here
+    with open("config.json",'r') as f:
+        sessionID = f["sessionID"]
     GYOC = {"ASP.NET_SessionId": sessionID}
     data = {"text": date}
     url = "https://glauniversity.in:8085/MyAccount/DutyDetails"
