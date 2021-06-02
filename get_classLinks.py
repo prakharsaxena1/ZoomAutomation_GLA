@@ -13,7 +13,8 @@ if len(dumpRemoveList) > 0:
         os.remove(i)
 
 if not os.path.exists(f"datadump{date}.json"):
-    with open("config.json",'r') as f:
+    with open("config.json",'r') as ff:
+        f = json.load(ff)
         sessionID = f["sessionID"]
     GYOC = {"ASP.NET_SessionId": sessionID}
     data = {"text": date}
